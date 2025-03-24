@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import MainPage from '@/pages/index/index' // 페이지 컴포넌트
+import BookmarkPage from '@/pages/bookmark/index'
 import { RecoilRoot } from 'recoil'
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
       <Routes>
         <Route index path="/" element={<MainPage />}></Route>
         <Route path='/:id' element={<MainPage />}></Route>
+        <Route path='/bookmark' element={<BookmarkPage />}></Route>
       </Routes>
     </BrowserRouter>
     </RecoilRoot>
