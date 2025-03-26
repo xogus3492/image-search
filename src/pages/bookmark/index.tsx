@@ -22,9 +22,14 @@ function index() {
       {/* 공통 헤더 부분 */}
       <CommonHeader />
       <main className={styles.page__contents}>
-        {data.map((item: CardDTO) => {
-          return <Card prop={item} key={item.id} />
-        })}
+        {data.length === 0 ? (
+          <div className={styles.page__contents__noData}>북마크 한 이미지가 없습니다.</div>
+        ) : (
+          data.map((item: CardDTO) => {
+            return <Card prop={item} key={item.id} />
+          })
+        )}
+        
       </main>
     </div>
   );

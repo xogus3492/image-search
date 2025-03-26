@@ -50,10 +50,20 @@ function DetailDialog({ data, handleDialog }: Props) {
         if (getLocalStorage && getLocalStorage.findIndex((item: CardDTO) => item.id === data.id) > -1) {
             setBookmark(true)
         } else if (!getLocalStorage) return
+
+        // esc 키 눌렀을 때 다이얼로그 창 닫기
+        const escKeyDownCloseDialog = (event: any) => {
+          console.log('함수호출')
+          if (event.key === 'Escape') {
+            closeDialog()
+          }
+        }
+        window.addEventListener('keydown', escKeyDownCloseDialog)
+        return () => window.removeEventListener('keydown', escKeyDownCloseDialog)
     }, [])
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} onClick={closeDialog}>
       <div className={styles.container__dialog}>
         <div className={styles.container__dialog__header}>
           <div className={styles.close}>
